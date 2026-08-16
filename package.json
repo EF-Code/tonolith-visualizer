@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "clean": "node scripts/clean.mjs",
     "check:bundle": "node scripts/check-bundle.mjs",
+    "check:paths": "node scripts/check-portability.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
