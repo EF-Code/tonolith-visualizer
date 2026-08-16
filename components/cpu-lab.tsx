@@ -5,7 +5,6 @@ import {
   decodeInstruction,
   disassembleWord,
   executeInstruction,
-  type CpuOutput,
   type CpuState,
   createInitialState,
   stateHash,
@@ -13,16 +12,7 @@ import {
 import { FIBONACCI_PROGRAM, FIBONACCI_ROM } from "../lib/program";
 import { binary, decimal, hex, shortHash } from "../lib/format";
 import { OUTPUT_SLOT_COUNT, RAM_WINDOW_SIZE, SPEED_DEFAULT, SPEED_MAX, SPEED_MIN } from "../lib/ui";
-
-type TraceRow = {
-  address: number;
-  word: number;
-  mnemonic: string;
-  beforeHash: string;
-  afterHash: string;
-  instructionCount: bigint;
-  output?: CpuOutput;
-};
+import { outputRows, outputValues, type TraceRow } from "../lib/trace";
 
 const INITIAL_STATE = createInitialState();
 
@@ -112,7 +102,8 @@ export function CpuLab() {
     setRunning(false);
   };
 
-  const outputs = history.flatMap((row) => (row.output === undefined ? [] : [row.output.value]));
+  const outputs = outputValues(history);
+  const eventRows = outputRows(history);
   const sourceMap = new Map(FIBONACCI_PROGRAM.sourceMap.map((entry) => [entry.address, entry]));
 
   return (
@@ -258,9 +249,9 @@ export function CpuLab() {
               })}
             </div>
             <div className="event-log" aria-live="polite">
-              {history.filter((row) => row.output !== undefined).length === 0 ? (
+              {eventRows.length === 0 ? (
                 <p className="empty-state">Output events will appear here as <span>SYS OUT</span> commits.</p>
-              ) : history.filter((row) => row.output !== undefined).slice().reverse().map((row) => (
+              ) : eventRows.slice().reverse().map((row) => (
                 <div className="event-row" key={`${row.instructionCount.toString()}-${row.output?.value}`}>
                   <span className="event-index">#{row.output!.outputIndex.toString()}</span>
                   <strong>{row.output!.value}</strong>
