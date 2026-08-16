@@ -2,7 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
 const ignored = new Set(['.git', 'node_modules', 'dist', 'coverage', '.vite']);
-const absolutePath = /\\/home\\/|\\/Users\\/|C:\\\\\\\\|\\/mnt\\//;
+const absolutePath = /\\/home\\/|\\/Users\\/|C:\\\\|\\/mnt\\//;
 const matches = [];
 
 async function visit(directory) {
@@ -24,4 +24,3 @@ if (matches.length > 0) {
   process.exit(1);
 }
 console.log('portability: no machine-specific paths found');
-
