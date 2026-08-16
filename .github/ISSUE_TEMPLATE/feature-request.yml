@@ -1,0 +1,19 @@
+name: Feature request
+description: Propose a focused visualizer improvement
+title: '[feature] '
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Trust boundary impact
+      description: Explain whether this changes local emulation or introduces chain data.
+    validations:
+      required: true
+
