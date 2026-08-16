@@ -9,7 +9,7 @@ import {
   createInitialState,
   stateHash,
 } from "tonolith/browser";
-import { FIBONACCI_PROGRAM, FIBONACCI_ROM } from "../lib/program";
+import { FIBONACCI_PROGRAM, FIBONACCI_ROM, FIBONACCI_ROM_ROOT } from "../lib/program";
 import { binary, decimal, hex, shortHash } from "../lib/format";
 import { OUTPUT_SLOT_COUNT, RAM_WINDOW_SIZE, SPEED_DEFAULT, SPEED_MAX, SPEED_MIN } from "../lib/ui";
 import { outputRows, outputValues, type TraceRow } from "../lib/trace";
@@ -181,7 +181,7 @@ export function CpuLab() {
               );
             })}
           </div>
-          <div className="program-footer"><span>ROM ROOT</span><span className="mono">{ROM_TREE_DESCRIPTION}</span></div>
+          <div className="program-footer"><span>ROM ROOT</span><span className="mono" title={hex(FIBONACCI_ROM_ROOT, 64)}>{ROM_TREE_DESCRIPTION}</span></div>
         </aside>
 
         <div className="core-column">
