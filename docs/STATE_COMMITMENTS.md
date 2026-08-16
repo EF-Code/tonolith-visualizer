@@ -7,5 +7,8 @@ The static commitment shown by the visualizer is derived from the canonical
 Fibonacci ROM root and the ISA/schema namespace. It is a local display of the
 same commitment inputs used by the Tonolith reference implementation.
 
-A displayed hash is not a signature, a transaction identifier, or proof that
-a contract state exists on TON. Chain evidence requires a separate read model.
+A displayed hash is not a signature or a transaction identifier. In testnet
+mode, the UI separately shows the contract-emitted hash recorded in the
+snapshot and the emulator reconstruction used for comparison. Agreement is an
+internal consistency check over captured evidence, not a proof of current TON
+consensus state or production readiness.

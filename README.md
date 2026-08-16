@@ -2,15 +2,16 @@
 
 An interactive, read-only laboratory for the Tonolith v1 4-bit processor.
 
-The first slice runs the canonical Fibonacci program in the same TypeScript
-reference emulator used by the Tonolith repository. It exposes the program
-counter, decoded instruction, accumulator, flags, registers, RAM window,
-output events, and state hashes while the program executes one instruction at
-a time.
+The default view replays the earlier Tonolith Fibonacci deployment on TON
+testnet, one accepted transaction at a time. The machine state is rebuilt in
+the browser from the pinned TypeScript reference emulator and checked against
+the state hashes and CPU events recorded by the contract. A separate local
+emulator mode is available for experimenting with the same program without
+chain data.
 
 Project guides live in the docs/ directory: scope, architecture, trust boundary,
 local development, validation, deployment, accessibility, security, visual QA,
-release, and the future testnet read model.
+release, and the testnet read model.
 
 ## Local development
 
@@ -35,8 +36,22 @@ pnpm preview
   the Node-only file assembler out of the client bundle. A small Buffer
   compatibility shim is used because the canonical TON cell hash implementation
   exposes Node's Buffer API.
-- The current surface is local emulation only. It does not connect a wallet or
-  submit transactions.
-- A future testnet view will be read-only first and will label chain evidence
-  separately from local emulator output.
+- The testnet view is a checked-in, read-only snapshot of the historical
+  Fibonacci run. It does not query a wallet, submit transactions, or pretend to
+  be a live RPC dashboard.
+- The local emulator remains available as a separate mode and is never labeled
+  as chain execution.
 - Private keys, mnemonics, and wallet files are not part of this project.
+
+## Refreshing the historical snapshot
+
+The snapshot is generated from the public TON testnet account history. To
+refresh it deliberately, run:
+
+```sh
+pnpm snapshot:testnet
+```
+
+The generator validates the 97 accepted advances, the seven output events, and
+the final emulator hash before writing `data/fibonacci-testnet.json`. A refresh
+should be reviewed as new chain evidence and committed separately from UI work.
