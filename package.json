@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "node scripts/clean.mjs",
+    "check:bundle": "node scripts/check-bundle.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
