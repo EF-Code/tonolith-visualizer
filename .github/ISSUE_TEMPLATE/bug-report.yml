@@ -1,0 +1,19 @@
+name: Bug report
+description: Report a reproducible visualizer problem
+title: '[bug] '
+labels: [bug]
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Describe the exact steps and expected versus actual behavior.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+    validations:
+      required: true
+
