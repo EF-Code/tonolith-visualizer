@@ -236,7 +236,7 @@ export function CpuLab() {
               <span className="panel-count">256 NIBBLES</span>
             </div>
             <div className="ram-grid">
-              {Array.from({ length: 32 }, (_, index) => (
+              {Array.from({ length: RAM_WINDOW_SIZE }, (_, index) => (
                 <div className={`ram-cell ${index === state.pc ? "touched" : ""}`} key={index}>
                   <span>{index.toString(16).padStart(2, "0")}</span><strong>{(state.ram[index] ?? 0).toString(16).toUpperCase()}</strong>
                 </div>
