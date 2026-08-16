@@ -15,10 +15,23 @@ import { OUTPUT_SLOT_COUNT, RAM_WINDOW_SIZE, SPEED_DEFAULT, SPEED_MAX, SPEED_MIN
 import { outputRows, outputValues, type TraceRow } from "../lib/trace";
 import { machineStateLabel, runStateLabel } from "../lib/labels";
 import { PROGRAM_DESCRIPTION, PROGRAM_NAME, ROM_TREE_DESCRIPTION } from "../lib/program-info";
+import { TestnetRunLab } from "./testnet-run";
 
 const INITIAL_STATE = createInitialState();
 
+export type VisualizerMode = "testnet" | "local";
+
 export function CpuLab() {
+  const [mode, setMode] = useState<VisualizerMode>("testnet");
+
+  if (mode === "testnet") {
+    return <TestnetRunLab onModeChange={setMode} />;
+  }
+
+  return <LocalCpuLab onModeChange={setMode} />;
+}
+
+function LocalCpuLab({ onModeChange }: { onModeChange: (mode: VisualizerMode) => void }) {
   const [state, setState] = useState<CpuState>(() => createInitialState());
   const [history, setHistory] = useState<TraceRow[]>([]);
   const [speed, setSpeed] = useState(SPEED_DEFAULT);
@@ -117,7 +130,8 @@ export function CpuLab() {
         </a>
         <div className="topbar-meta">
           <span className="network-dot" />
-          <span>LOCAL EMULATOR</span>
+          <button className="mode-button mode-button-active" type="button" aria-pressed="true">LOCAL EMULATOR</button>
+          <button className="mode-button" type="button" aria-pressed="false" onClick={() => onModeChange("testnet")}>TESTNET RUN</button>
           <span className="version">ISA v1</span>
         </div>
       </header>
@@ -287,7 +301,7 @@ export function CpuLab() {
             <div className="proof-footnote">Every step creates a new committed architectural state. The visualizer is running the same TypeScript reference emulator used by Tonolith’s differential tests.</div>
           </div>
 
-          <div className="trust-note"><span className="shield-icon">◇</span><div><strong>Read-only by design</strong><p>No wallet connected. No transaction is being sent. Testnet verification will be a separate, explicitly labeled view.</p></div></div>
+          <div className="trust-note"><span className="shield-icon">◇</span><div><strong>Local-only mode</strong><p>No wallet connected and no transaction is being sent. This view is an unconnected emulator; switch to TESTNET RUN to inspect the recorded chain evidence.</p></div></div>
         </aside>
       </section>
 
