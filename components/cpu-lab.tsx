@@ -9,7 +9,7 @@ import {
   createInitialState,
   stateHash,
 } from "tonolith/browser";
-import { FIBONACCI_PROGRAM, FIBONACCI_ROM, FIBONACCI_ROM_ROOT } from "../lib/program";
+import { FIBONACCI_PROGRAM, FIBONACCI_ROM, FIBONACCI_ROM_ROOT, FIBONACCI_STATIC_COMMITMENT } from "../lib/program";
 import { binary, decimal, hex, shortHash } from "../lib/format";
 import { OUTPUT_SLOT_COUNT, RAM_WINDOW_SIZE, SPEED_DEFAULT, SPEED_MAX, SPEED_MIN } from "../lib/ui";
 import { outputRows, outputValues, type TraceRow } from "../lib/trace";
@@ -276,6 +276,10 @@ export function CpuLab() {
             <div className="hash-block muted-hash">
               <span>INITIAL CORE HASH</span>
               <strong title={initialHash}>{shortHash(initialHash)}</strong>
+            </div>
+            <div className="hash-block muted-hash">
+              <span>STATIC COMMITMENT</span>
+              <strong title={hex(FIBONACCI_STATIC_COMMITMENT, 64)}>{shortHash(hex(FIBONACCI_STATIC_COMMITMENT, 64))}</strong>
             </div>
             <div className="proof-footnote">Every step creates a new committed architectural state. The visualizer is running the same TypeScript reference emulator used by Tonolith’s differential tests.</div>
           </div>
