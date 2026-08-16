@@ -124,11 +124,11 @@ export function CpuLab() {
 
       <section className="hero" id="top">
         <div>
-          <p className="eyebrow">A verifiable 4-bit computer on TON</p>
-          <h1>Watch the machine<br /><span>think in nibbles.</span></h1>
+          <p className="eyebrow">TONOLITH V1 / LOCAL EMULATOR</p>
+          <h1>Trace the CPU<br /><span>one instruction at a time.</span></h1>
           <p className="hero-copy">
-            Step through the canonical Fibonacci program and see every register, flag,
-            memory cell, output event, and state commitment change in order.
+            Run the Fibonacci program and inspect the registers, flags, RAM, output
+            events, and state hash after each step.
           </p>
         </div>
         <div className="hero-proof">
