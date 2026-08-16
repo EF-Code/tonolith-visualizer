@@ -13,6 +13,7 @@ import { FIBONACCI_PROGRAM, FIBONACCI_ROM } from "../lib/program";
 import { binary, decimal, hex, shortHash } from "../lib/format";
 import { OUTPUT_SLOT_COUNT, RAM_WINDOW_SIZE, SPEED_DEFAULT, SPEED_MAX, SPEED_MIN } from "../lib/ui";
 import { outputRows, outputValues, type TraceRow } from "../lib/trace";
+import { machineStateLabel, runStateLabel } from "../lib/labels";
 
 const INITIAL_STATE = createInitialState();
 
@@ -154,7 +155,7 @@ export function CpuLab() {
         </label>
         <div className="run-state" aria-live="polite">
           <span className={`state-led ${halted ? "halted" : running ? "running" : "ready"}`} />
-          {halted ? "HALTED" : running ? "EXECUTING" : "READY"}
+          {runStateLabel(running, halted)}
         </div>
       </section>
 
@@ -203,7 +204,7 @@ export function CpuLab() {
               <span className="section-label">FLAGS</span>
               <Flag name="Z" active={(state.flags & 1) !== 0} detail="ZERO" />
               <Flag name="C" active={(state.flags & 2) !== 0} detail="CARRY" />
-              <span className="status-chip"><span className={`state-led ${halted ? "halted" : "running"}`} /> {halted ? "HALTED" : "RUNNING"}</span>
+              <span className="status-chip"><span className={`state-led ${halted ? "halted" : "running"}`} /> {machineStateLabel(halted)}</span>
             </div>
           </div>
 
