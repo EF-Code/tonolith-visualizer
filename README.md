@@ -8,6 +8,10 @@ counter, decoded instruction, accumulator, flags, registers, RAM window,
 output events, and state hashes while the program executes one instruction at
 a time.
 
+Project guides live in the docs/ directory: scope, architecture, trust boundary,
+local development, validation, deployment, accessibility, security, visual QA,
+release, and the future testnet read model.
+
 ## Local development
 
 ```sh
