@@ -172,7 +172,7 @@ export function CpuLab() {
             {FIBONACCI_PROGRAM.sourceMap.map((entry) => {
               const isActive = entry.address === activeAddress && !halted;
               return (
-                <div className={`source-row ${isActive ? "active" : ""}`} key={entry.address}>
+                <div className={`source-row ${isActive ? "active" : ""}`} key={entry.address} aria-current={isActive ? "step" : undefined} title={`ROM address ${entry.address}`}>
                   <span className="source-address">{entry.address.toString().padStart(3, "0")}</span>
                   <span className="source-word">{hex(FIBONACCI_ROM[entry.address] ?? 0, 4)}</span>
                   <span className="source-code">{entry.source}</span>
