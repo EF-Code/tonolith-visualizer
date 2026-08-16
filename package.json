@@ -11,6 +11,7 @@
     "clean": "node scripts/clean.mjs",
     "check:bundle": "node scripts/check-bundle.mjs",
     "check:paths": "node scripts/check-portability.mjs",
+    "check:secrets": "node scripts/check-secrets.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
