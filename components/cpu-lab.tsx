@@ -12,6 +12,7 @@ import {
 } from "tonolith/browser";
 import { FIBONACCI_PROGRAM, FIBONACCI_ROM } from "../lib/program";
 import { binary, decimal, hex, shortHash } from "../lib/format";
+import { OUTPUT_SLOT_COUNT, RAM_WINDOW_SIZE, SPEED_DEFAULT, SPEED_MAX, SPEED_MIN } from "../lib/ui";
 
 type TraceRow = {
   address: number;
@@ -28,7 +29,7 @@ const INITIAL_STATE = createInitialState();
 export function CpuLab() {
   const [state, setState] = useState<CpuState>(() => createInitialState());
   const [history, setHistory] = useState<TraceRow[]>([]);
-  const [speed, setSpeed] = useState(6);
+  const [speed, setSpeed] = useState(SPEED_DEFAULT);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const stateRef = useRef(state);
@@ -157,7 +158,7 @@ export function CpuLab() {
         </div>
         <label className="speed-control">
           <span>PACE</span>
-          <input type="range" min="1" max="12" value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
+          <input type="range" min={SPEED_MIN} max={SPEED_MAX} value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
           <strong>{speed} Hz</strong>
         </label>
         <div className="run-state" aria-live="polite">
@@ -248,10 +249,10 @@ export function CpuLab() {
           <div className="panel output-panel">
             <div className="panel-heading">
               <div><span className="panel-kicker">05 / EVENTS</span><h2>Output stream</h2></div>
-              <span className="panel-count">{outputs.length} / 7</span>
+              <span className="panel-count">{outputs.length} / {OUTPUT_SLOT_COUNT}</span>
             </div>
             <div className="output-sequence" aria-label="Output sequence">
-              {Array.from({ length: 7 }, (_, index) => {
+              {Array.from({ length: OUTPUT_SLOT_COUNT }, (_, index) => {
                 const value = outputs[index];
                 return <span className={value === undefined ? "empty" : "filled"} key={index}>{value ?? "·"}</span>;
               })}
