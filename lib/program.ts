@@ -1,4 +1,4 @@
-import { assemble } from "tonolith/browser";
+import { assemble, romRootHash, staticCommitment } from "tonolith/browser";
 
 export const FIBONACCI_SOURCE = `; Tonolith ISA v1 Fibonacci demonstration.
 ; R0 = current value, R1 = next value, R2 = remaining outputs, R3 = temporary.
@@ -32,3 +32,5 @@ DONE:
 
 export const FIBONACCI_PROGRAM = assemble(FIBONACCI_SOURCE);
 export const FIBONACCI_ROM = FIBONACCI_PROGRAM.words;
+export const FIBONACCI_ROM_ROOT = romRootHash(FIBONACCI_ROM);
+export const FIBONACCI_STATIC_COMMITMENT = staticCommitment(FIBONACCI_ROM);
