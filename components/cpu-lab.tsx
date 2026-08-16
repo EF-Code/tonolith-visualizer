@@ -14,6 +14,7 @@ import { binary, decimal, hex, shortHash } from "../lib/format";
 import { OUTPUT_SLOT_COUNT, RAM_WINDOW_SIZE, SPEED_DEFAULT, SPEED_MAX, SPEED_MIN } from "../lib/ui";
 import { outputRows, outputValues, type TraceRow } from "../lib/trace";
 import { machineStateLabel, runStateLabel } from "../lib/labels";
+import { PROGRAM_DESCRIPTION, PROGRAM_NAME, ROM_TREE_DESCRIPTION } from "../lib/program-info";
 
 const INITIAL_STATE = createInitialState();
 
@@ -131,7 +132,7 @@ export function CpuLab() {
           </p>
         </div>
         <div className="hero-proof">
-          <div className="proof-line"><span>PROGRAM</span><strong>FIBONACCI</strong></div>
+          <div className="proof-line"><span>PROGRAM</span><strong title={PROGRAM_DESCRIPTION}>{PROGRAM_NAME}</strong></div>
           <div className="proof-line"><span>EXECUTION</span><strong>ONE INSTRUCTION / STEP</strong></div>
           <div className="proof-line"><span>NETWORK</span><strong className="muted-value">LOCAL ONLY</strong></div>
         </div>
@@ -180,7 +181,7 @@ export function CpuLab() {
               );
             })}
           </div>
-          <div className="program-footer"><span>ROM ROOT</span><span className="mono">4-WAY MERKLE TREE</span></div>
+          <div className="program-footer"><span>ROM ROOT</span><span className="mono">{ROM_TREE_DESCRIPTION}</span></div>
         </aside>
 
         <div className="core-column">
