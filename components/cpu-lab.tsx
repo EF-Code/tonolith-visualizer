@@ -140,18 +140,18 @@ export function CpuLab() {
 
       <section className="control-strip" aria-label="Execution controls">
         <div className="control-primary">
-          <button className="button button-primary" type="button" onClick={() => setRunning((value) => !value)} disabled={halted}>
+          <button className="button button-primary" type="button" aria-pressed={running} onClick={() => setRunning((value) => !value)} disabled={halted}>
             <span className="button-icon" aria-hidden="true">{running ? "Ⅱ" : "▶"}</span>
             {running ? "Pause" : "Run program"}
           </button>
-          <button className="button button-secondary" type="button" onClick={performStep} disabled={running || halted}>
+          <button className="button button-secondary" type="button" aria-label="Step once" onClick={performStep} disabled={running || halted}>
             Step once <span className="key">SPACE</span>
           </button>
           <button className="button button-quiet" type="button" onClick={reset}>Reset</button>
         </div>
         <label className="speed-control">
           <span>PACE</span>
-          <input type="range" min={SPEED_MIN} max={SPEED_MAX} value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
+          <input aria-label="Execution pace in hertz" type="range" min={SPEED_MIN} max={SPEED_MAX} value={speed} onChange={(event) => setSpeed(Number(event.target.value))} />
           <strong>{speed} Hz</strong>
         </label>
         <div className="run-state" aria-live="polite">
