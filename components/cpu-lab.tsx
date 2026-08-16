@@ -250,6 +250,9 @@ export function CpuLab() {
                 return <span className={value === undefined ? "empty" : "filled"} key={index}>{value ?? "·"}</span>;
               })}
             </div>
+            <div className="output-progress" role="progressbar" aria-label="Fibonacci output progress" aria-valuemin={0} aria-valuemax={OUTPUT_SLOT_COUNT} aria-valuenow={outputs.length}>
+              <span style={{ width: ((outputs.length / OUTPUT_SLOT_COUNT) * 100) + "%" }} />
+            </div>
             <div className="event-log" aria-live="polite">
               {eventRows.length === 0 ? (
                 <p className="empty-state">Output events will appear here as <span>SYS OUT</span> commits.</p>
