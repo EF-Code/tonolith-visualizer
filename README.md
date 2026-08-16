@@ -40,11 +40,3 @@ pnpm preview
 - A future testnet view will be read-only first and will label chain evidence
   separately from local emulator output.
 - Private keys, mnemonics, and wallet files are not part of this project.
-
-## Deployment
-
-This is a static Vite application and can be connected directly to its own
-Vercel project. Vercel should use the `pnpm build` command and publish
-`dist/`. Production should deploy from `main`; pull requests should remain
-preview deployments until the local emulator and live-read verification gates
-pass.
