@@ -6,4 +6,3 @@
 - Added canonical Fibonacci stepping and output inspection.
 - Added register, RAM, flag, event, and state-commitment views.
 - Added Vite production builds and Vercel deployment metadata.
-

@@ -5,4 +5,3 @@ for (const target of ['dist', 'coverage', '.vite']) {
 }
 
 console.log('clean: generated directories removed');
-

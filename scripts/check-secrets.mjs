@@ -24,4 +24,3 @@ if (matches.length > 0) {
   process.exit(1);
 }
 console.log('secrets: no credential patterns found');
-

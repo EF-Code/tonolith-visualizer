@@ -16,4 +16,3 @@ body:
       description: Explain whether this changes local emulation or introduces chain data.
     validations:
       required: true
-

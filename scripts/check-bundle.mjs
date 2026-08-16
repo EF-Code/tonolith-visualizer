@@ -16,4 +16,3 @@ if (javascriptBytes > budget) {
   console.error('bundle: JavaScript budget exceeded');
   process.exit(1);
 }
-

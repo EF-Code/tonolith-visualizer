@@ -15,4 +15,3 @@
 
 Wallet signing and transaction submission are outside the current roadmap until
 there is a separate threat model and product decision.
-
