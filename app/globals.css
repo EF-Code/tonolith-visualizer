@@ -140,6 +140,8 @@ h1 span { color: var(--orange); }
 .output-sequence { border-bottom: 1px solid var(--line-soft); border-top: 1px solid var(--line-soft); display: flex; gap: 7px; padding: 18px; }
 .output-sequence span { align-items: center; border: 1px solid var(--line); color: var(--faint); display: flex; font-family: var(--font-mono); font-size: 20px; height: 38px; justify-content: center; width: 34px; }
 .output-sequence span.filled { background: rgba(126, 224, 173, 0.1); border-color: rgba(126, 224, 173, 0.4); color: var(--green); }
+.output-progress { background: var(--line-soft); height: 3px; margin: -8px 18px 0; overflow: hidden; }
+.output-progress span { background: var(--green); display: block; height: 100%; transition: width 180ms ease; }
 .event-log { min-height: 120px; padding: 12px 18px 16px; }
 .empty-state { color: var(--faint); font-family: var(--font-mono); font-size: 10px; line-height: 1.6; margin: 8px 0; }
 .empty-state span { color: var(--orange); }
