@@ -12,6 +12,7 @@
     "check:bundle": "node scripts/check-bundle.mjs",
     "check:paths": "node scripts/check-portability.mjs",
     "check:secrets": "node scripts/check-secrets.mjs",
+    "release:preflight": "node scripts/release-preflight.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
