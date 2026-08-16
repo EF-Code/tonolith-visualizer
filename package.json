@@ -1,0 +1,30 @@
+{
+  "name": "tonolith-visualizer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An interactive, verifiable visualizer for the Tonolith 4-bit processor.",
+  "packageManager": "pnpm@11.3.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "buffer": "6.0.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tonolith": "git+https://github.com/EF-Code/Tonolith.git#b95d505"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "5.0.4",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "typescript": "5.9.3",
+    "vite": "7.1.3"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

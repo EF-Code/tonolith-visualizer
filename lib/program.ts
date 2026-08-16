@@ -1,0 +1,34 @@
+import { assemble } from "tonolith/browser";
+
+export const FIBONACCI_SOURCE = `; Tonolith ISA v1 Fibonacci demonstration.
+; R0 = current value, R1 = next value, R2 = remaining outputs, R3 = temporary.
+
+    LDI 1
+    STR R0
+    LDI 1
+    STR R1
+    LDI 7
+    STR R2
+
+LOOP:
+    LDR R0
+    OUT
+    LDR R2
+    DEC
+    STR R2
+    JZ DONE
+
+    LDR R0
+    ADD R1
+    STR R3
+    LDR R1
+    STR R0
+    LDR R3
+    STR R1
+    JMP LOOP
+
+DONE:
+    HALT`;
+
+export const FIBONACCI_PROGRAM = assemble(FIBONACCI_SOURCE);
+export const FIBONACCI_ROM = FIBONACCI_PROGRAM.words;
