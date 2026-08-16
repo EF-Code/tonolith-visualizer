@@ -79,8 +79,12 @@ function base64Url(value) {
   return value.replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/u, "");
 }
 
+function transactionHashHex(transactionHash) {
+  return Buffer.from(transactionHash, "base64").toString("hex");
+}
+
 function explorerUrl(transactionHash) {
-  return `${EXPLORER_BASE}/transaction/${base64Url(transactionHash)}`;
+  return `${EXPLORER_BASE}/transaction/${transactionHashHex(transactionHash)}`;
 }
 
 function timestamp(utime) {
